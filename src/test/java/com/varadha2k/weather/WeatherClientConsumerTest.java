@@ -53,6 +53,6 @@ public class WeatherClientConsumerTest {
     public void shouldFetchWeatherInformation() throws Exception {
         Optional<WeatherResponse> weatherResponse = weatherClient.fetchWeather();
         assertThat(weatherResponse.isPresent(), is(true));
-        assertThat(weatherResponse.get().getSummary(), is("Rain"));
+        assertThat(weatherResponse.get().getSummary(), is("Very Cloudy"));
     }
 }
