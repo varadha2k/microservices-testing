@@ -18,17 +18,7 @@ A simple way is to rename the `env.sample` file to `.env`, fill in your API key 
 source .env
 ```
 
-### 2. Start a PostgreSQL database
-The easiest way is to use the provided `startDatabase.sh` script. This script starts a Docker container which contains a database with the following configuration:
-    
-  * port: `1543`
-  * username: `postgres`
-  * password: `password`
-  * database name: `postgres`
-  
-If you don't want to use the script make sure to have a database with the same configuration or modify your `application.properties`.
-
-### 3. Run the Application
+### 2. Run the Application
 Once you've provided the API key and started a PostgreSQL database you can run the application using
 
 ```bash
