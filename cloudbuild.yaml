@@ -3,4 +3,4 @@ steps:
   args: ['build']
 - name: 'gcr.io/cloud-builders/docker'
   args: ['build', '--tag=gcr.io/$PROJECT_ID/spring-boot', '.']
-  images: ['gcr.io/$PROJECT_ID/spring-boot']
+images: ['gcr.io/$PROJECT_ID/spring-boot']
