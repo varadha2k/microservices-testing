@@ -1,8 +1,10 @@
 package com.varadha2k.weather;
 
 import static org.hamcrest.core.Is.is;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertThat;
+import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
@@ -18,6 +20,10 @@ public class WeatherResponseTest {
         WeatherResponse parsedResponse = new ObjectMapper().readValue(jsonResponse, WeatherResponse.class);
 
         assertThat(parsedResponse, is(expectedResponse));
+        assertTrue(expectedResponse.equals(expectedResponse));
+        assertFalse(expectedResponse.equals(null));
+        assertTrue(expectedResponse.getCurrently().equals(expectedResponse.getCurrently()));
+        assertFalse(expectedResponse.getCurrently().equals(null));
         assertNotNull(expectedResponse.getCurrently());
         assertNotNull(expectedResponse.hashCode());
         assertNotNull(expectedResponse.getCurrently().hashCode());
