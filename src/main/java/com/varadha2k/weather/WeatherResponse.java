@@ -31,6 +31,10 @@ public class WeatherResponse {
         return currently != null ? currently.equals(response.currently) : response.currently == null;
     }
 
+    @Override
+    public int hashCode() {
+        return currently != null ? currently.hashCode() : 0;
+    }
 
     @Override
     public String toString() {
@@ -61,6 +65,11 @@ public class WeatherResponse {
             Currently currently = (Currently) o;
 
             return icon != null ? icon.equals(currently.icon) : currently.icon == null;
+        }
+
+        @Override
+        public int hashCode() {
+            return icon != null ? icon.hashCode() : 0;
         }
 
         @Override
