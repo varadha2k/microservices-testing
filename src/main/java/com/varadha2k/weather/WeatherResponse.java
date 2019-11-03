@@ -9,16 +9,16 @@ public class WeatherResponse {
 
     public WeatherResponse() {}
 
-    public WeatherResponse(String currentSummary) {
-        this.currently = new Currently(currentSummary);
+    public WeatherResponse(String currenticon) {
+        this.currently = new Currently(currenticon);
     }
 
     public Currently getCurrently() {
         return currently;
     }
 
-    public String getSummary() {
-        return currently.getSummary();
+    public String geticon() {
+        return currently.geticon();
     }
 
     @Override
@@ -45,16 +45,16 @@ public class WeatherResponse {
 
     @JsonIgnoreProperties(ignoreUnknown = true)
     public static class Currently {
-        private String summary;
+        private String icon;
 
         public Currently() {}
 
-        public Currently(String summary) {
-            this.summary = summary;
+        public Currently(String icon) {
+            this.icon = icon;
         }
 
-        public String getSummary() {
-            return summary;
+        public String geticon() {
+            return icon;
         }
 
         @Override
@@ -64,18 +64,18 @@ public class WeatherResponse {
 
             Currently currently = (Currently) o;
 
-            return summary != null ? summary.equals(currently.summary) : currently.summary == null;
+            return icon != null ? icon.equals(currently.icon) : currently.icon == null;
         }
 
         @Override
         public int hashCode() {
-            return summary != null ? summary.hashCode() : 0;
+            return icon != null ? icon.hashCode() : 0;
         }
 
         @Override
         public String toString() {
             return "Currently{" +
-                    "summary='" + summary + '\'' +
+                    "icon='" + icon + '\'' +
                     '}';
         }
     }

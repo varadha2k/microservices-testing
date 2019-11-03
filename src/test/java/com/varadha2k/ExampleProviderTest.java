@@ -1,6 +1,7 @@
 package com.varadha2k;
 
 import au.com.dius.pact.provider.junit.Provider;
+
 import au.com.dius.pact.provider.junit.RestPactRunner;
 import au.com.dius.pact.provider.junit.State;
 import au.com.dius.pact.provider.junit.loader.PactFolder;
