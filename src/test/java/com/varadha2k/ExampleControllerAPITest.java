@@ -54,7 +54,7 @@ public class ExampleControllerAPITest {
 	}
 
 	@Test
-	public void shouldReturnRecommendationFoRain() throws Exception {
+	public void shouldReturnRecommendationForRain() throws Exception {
 		WeatherResponse weatherResponse = new WeatherResponse("rain");
 		given(weatherClient.fetchWeatherWithAPI("13.0827", "80.2707")).willReturn(Optional.of(weatherResponse));
 
@@ -64,13 +64,23 @@ public class ExampleControllerAPITest {
 	}
 
 	@Test
-	public void shouldReturnRecommendationFoClearDay() throws Exception {
+	public void shouldReturnRecommendationForClearDay() throws Exception {
 		WeatherResponse weatherResponse = new WeatherResponse("clear-day");
 		given(weatherClient.fetchWeatherWithAPI("13.0827", "80.2707")).willReturn(Optional.of(weatherResponse));
 
 		mockMvc.perform(get("/weatherRecommendation/?latitude=13.0827&longitude=80.2707"))
 				.andExpect(status().is2xxSuccessful())
 				.andExpect(content().string("{\"climate\":\"clear-day\",\"recommendation\":\"Umbrella not required\"}"));
+	}
+
+	@Test
+	public void shouldReturnRecommendationWithException() throws Exception {
+		WeatherResponse weatherResponse = new WeatherResponse("Invalid Response");
+		given(weatherClient.fetchWeatherWithAPI("13.0827", "80.2707")).willReturn(Optional.of(weatherResponse));
+
+		mockMvc.perform(get("/weatherRecommendation/?latitude=13.0827&longitude=80.2707"))
+				.andExpect(status().is2xxSuccessful())
+				.andExpect(content().string("{\"climate\":\"Invalid Response\",\"recommendation\":\"Sorry, I couldn't fetch the weather for you :((\"}"));
 	}
 
 }

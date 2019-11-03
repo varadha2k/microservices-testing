@@ -71,6 +71,9 @@ public class ExampleController {
 
 		try {
 			recommendation = ExampleController.map.get(climate);
+			
+			if(null == recommendation)
+				recommendation = "Sorry, I couldn't fetch the weather for you :((";
 		} catch (Exception e) {
 			recommendation = "Sorry, I couldn't fetch the weather for you :((";
 		}

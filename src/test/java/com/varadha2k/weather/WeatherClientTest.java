@@ -62,4 +62,15 @@ public class WeatherClientTest {
 		assertThat(actualResponse, is(Optional.of(expectedResponse)));
 	}
 
+	@Test
+	public void shouldReturnEmptyOptionalIfWeatherServiceAPIIsUnavailable() throws Exception {
+		given(restTemplate.getForObject("http://localhost:8089/someAppId/53.5511,9.9937", WeatherResponse.class))
+				.willThrow(new RestClientException("something went wrong"));
+
+		Optional<WeatherResponse> actualResponse = subject.fetchWeatherWithAPI("53.5511", "9.9937");
+
+		assertThat(actualResponse, is(Optional.empty()));
+
+	}
+
 }
