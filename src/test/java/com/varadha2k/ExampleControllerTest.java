@@ -25,12 +25,15 @@ public class ExampleControllerTest {
     @Before
     public void setUp() throws Exception {
         initMocks(this);
+        subject = new ExampleController(weatherClient);
     }
 
     @Test
     public void shouldReturnHelloWorld() throws Exception {
         assertThat(subject.hello(), is("Hello World!"));
     }
+
+
 
     @Test
     public void shouldReturnWeatherClientResult() throws Exception {
