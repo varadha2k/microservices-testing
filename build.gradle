@@ -33,7 +33,7 @@ plugins {
 
 sonarqube {
   properties {
-    sonar.projectKey: varadha2k_microservices-testing
+    sonar.projectKey: "varadha2k_microservices-testing"
   }
 }
 
