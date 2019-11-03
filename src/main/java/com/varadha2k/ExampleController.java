@@ -69,14 +69,10 @@ public class ExampleController {
 
 		String recommendation = "";
 
-		try {
-			recommendation = ExampleController.map.get(climate);
-			
-			if(null == recommendation)
-				recommendation = "Sorry, I couldn't fetch the weather for you :((";
-		} catch (Exception e) {
+		recommendation = ExampleController.map.get(climate);
+
+		if (null == recommendation)
 			recommendation = "Sorry, I couldn't fetch the weather for you :((";
-		}
 
 		resp.setRecommendation(recommendation);
 

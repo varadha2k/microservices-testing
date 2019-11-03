@@ -1,6 +1,7 @@
 # Testing Microservices in Spring
 
 [![Build Status](https://travis-ci.org/varadha2k/spring-testing.svg?branch=master)](https://travis-ci.org/varadha2k/spring-testing)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=microservices-testing&metric=alert_status)](https://sonarcloud.io/dashboard?id=microservices-testing)
 
 This repository contains a *Spring Boot* application with lots of exemplary tests on different levels of the [Test Pyramid](https://martinfowler.com/bliki/TestPyramid.html). It shows an opinionated way to thoroughly test your spring application by demonstrating different types and levels of testing. You will find that some of the tests are duplicated along the test pyramid -- concepts that have already been tested in lower-level tests will be tested in more high-level tests. This contradicts the premise of the test pyramid. In this case it helps showcasing different kinds of tests which is the main goal of this repository.
 
