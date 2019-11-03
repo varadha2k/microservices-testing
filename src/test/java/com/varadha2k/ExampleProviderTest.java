@@ -1,26 +1,18 @@
 package com.varadha2k;
 
-import au.com.dius.pact.provider.junit.Provider;
-
-import au.com.dius.pact.provider.junit.RestPactRunner;
-import au.com.dius.pact.provider.junit.State;
-import au.com.dius.pact.provider.junit.loader.PactFolder;
-import au.com.dius.pact.provider.junit.target.TestTarget;
-import au.com.dius.pact.provider.spring.target.MockMvcTarget;
+import static org.mockito.MockitoAnnotations.initMocks;
 
 import org.junit.Before;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 
-import com.varadha2k.ExampleController;
-import com.varadha2k.person.Person;
-import com.varadha2k.person.PersonRepository;
 import com.varadha2k.weather.WeatherClient;
 
-import java.util.Optional;
-
-import static org.mockito.Mockito.when;
-import static org.mockito.MockitoAnnotations.initMocks;
+import au.com.dius.pact.provider.junit.Provider;
+import au.com.dius.pact.provider.junit.RestPactRunner;
+import au.com.dius.pact.provider.junit.loader.PactFolder;
+import au.com.dius.pact.provider.junit.target.TestTarget;
+import au.com.dius.pact.provider.spring.target.MockMvcTarget;
 
 /**
  *  A provider test for the contract between this service (as a provider) and
@@ -33,8 +25,6 @@ import static org.mockito.MockitoAnnotations.initMocks;
 @PactFolder("target/pacts") // tells pact where to load the pact files from
 public class ExampleProviderTest {
 
-    @Mock
-    private PersonRepository personRepository;
 
     @Mock
     private WeatherClient weatherClient;
@@ -47,14 +37,7 @@ public class ExampleProviderTest {
     @Before
     public void before() {
         initMocks(this);
-        exampleController = new ExampleController(personRepository, weatherClient);
         target.setControllers(exampleController);
     }
 
-    @State("person data") // same as the "given()" part in our consumer test
-    public void personData() {
-        Person peterPan = new Person("Peter", "Pan");
-        when(personRepository.findByLastName("Pan")).thenReturn(Optional.of
-                (peterPan));
-    }
 }
