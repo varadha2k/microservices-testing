@@ -23,13 +23,13 @@
                     "timezone": "America/Los_Angeles",
                     "currently": {
                         "time": 1453402675,
-                        "summary": "Rain",
-                        "icon": "rain",
+                        "summary": "Very Cloudy",
+                        "icon": "Very Cloudy",
                         "nearestStormDistance": 0,
                         "precipIntensity": 0.1685,
                         "precipIntensityError": 0.0067,
                         "precipProbability": 1,
-                        "precipType": "rain",
+                        "precipType": "Very Cloudy",
                         "temperature": 48.71,
                         "apparentTemperature": 46.93,
                         "dewPoint": 47.7,
@@ -42,29 +42,29 @@
                         "ozone": 328.35
                     },
                     "minutely": {
-                        "summary": "Rain for the hour.",
-                        "icon": "rain",
+                        "summary": "Very Cloudy for the hour.",
+                        "icon": "Very Cloudy",
                         "data": [
                             {
                                 "time": 1453402620,
                                 "precipIntensity": 0.1715,
                                 "precipIntensityError": 0.0066,
                                 "precipProbability": 1,
-                                "precipType": "rain"
+                                "precipType": "Very Cloudy"
                             }
                         ]
                     },
                     "hourly": {
-                        "summary": "Rain throughout the day.",
-                        "icon": "rain",
+                        "summary": "Very Cloudy throughout the day.",
+                        "icon": "Very Cloudy",
                         "data": [
                             {
                                 "time": 1453399200,
-                                "summary": "Rain",
-                                "icon": "rain",
+                                "summary": "Very Cloudy",
+                                "icon": "Very Cloudy",
                                 "precipIntensity": 0.1379,
                                 "precipProbability": 0.85,
-                                "precipType": "rain",
+                                "precipType": "Very Cloudy",
                                 "temperature": 48.16,
                                 "apparentTemperature": 46.41,
                                 "dewPoint": 46.89,
@@ -79,13 +79,13 @@
                         ]
                     },
                     "daily": {
-                        "summary": "Light rain throughout the week, with temperatures bottoming out at 48\u00b0F on Sunday.",
-                        "icon": "rain",
+                        "summary": "Light Very Cloudy throughout the week, with temperatures bottoming out at 48\u00c2\u00b0F on Sunday.",
+                        "icon": "Very Cloudy",
                         "data": [
                             {
                                 "time": 1453363200,
-                                "summary": "Rain throughout the day.",
-                                "icon": "rain",
+                                "summary": "Very Cloudy throughout the day.",
+                                "icon": "Very Cloudy",
                                 "sunriseTime": 1453391560,
                                 "sunsetTime": 1453424361,
                                 "moonPhase": 0.43,
@@ -93,7 +93,7 @@
                                 "precipIntensityMax": 0.1722,
                                 "precipIntensityMaxTime": 1453392000,
                                 "precipProbability": 0.87,
-                                "precipType": "rain",
+                                "precipType": "Very Cloudy",
                                 "temperatureMin": 41.42,
                                 "temperatureMinTime": 1453363200,
                                 "temperatureMax": 53.27,

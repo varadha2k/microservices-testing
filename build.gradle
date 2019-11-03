@@ -39,8 +39,6 @@ dependencies {
 		exclude module: 'spring-boot-starter-tomcat'
 	}
 	compile("org.springframework.boot:spring-boot-starter-jetty")
-	compile('org.springframework.boot:spring-boot-starter-data-jpa')
-	compile('com.h2database:h2')
 	testCompile('org.springframework.boot:spring-boot-starter-test')
 	testCompile('com.h2database:h2')
 	testCompile('io.rest-assured:rest-assured:3.0.3')
