@@ -31,11 +31,6 @@ plugins {
   id "org.sonarqube" version "2.7.1"
 }
 
-sonarqube {
-  properties {
-    sonar.projectKey: "varadha2k_microservices-testing"
-  }
-}
 
 dependencies {
 	compile('org.springframework.boot:spring-boot-starter')
