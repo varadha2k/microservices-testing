@@ -1,5 +1,12 @@
 package com.varadha2k.weather;
 
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.core.Is.is;
+import static org.mockito.BDDMockito.given;
+import static org.mockito.MockitoAnnotations.initMocks;
+
+import java.util.Optional;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -8,50 +15,51 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
 
-import com.varadha2k.weather.WeatherClient;
-import com.varadha2k.weather.WeatherResponse;
-
-import java.util.Optional;
-
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.core.Is.is;
-import static org.mockito.BDDMockito.given;
-import static org.mockito.MockitoAnnotations.initMocks;
-
 @RunWith(SpringRunner.class)
 public class WeatherClientTest {
 
-    private WeatherClient subject;
+	private WeatherClient subject;
 
-    @Mock
-    private RestTemplate restTemplate;
+	@Mock
+	private RestTemplate restTemplate;
 
-    @Before
-    public void setUp() throws Exception {
-        initMocks(this);
-        subject = new WeatherClient(restTemplate, "http://localhost:8089", "someAppId");
-    }
+	@Before
+	public void setUp() throws Exception {
+		initMocks(this);
+		subject = new WeatherClient(restTemplate, "http://localhost:8089", "someAppId");
+	}
 
-    @Test
-    public void shouldCallWeatherService() throws Exception {
-        WeatherResponse expectedResponse = new WeatherResponse("light rain");
-        given(restTemplate.getForObject("http://localhost:8089/someAppId/53.5511,9.9937", WeatherResponse.class))
-                .willReturn(expectedResponse);
+	@Test
+	public void shouldCallWeatherService() throws Exception {
+		WeatherResponse expectedResponse = new WeatherResponse("light rain");
+		given(restTemplate.getForObject("http://localhost:8089/someAppId/53.5511,9.9937", WeatherResponse.class))
+				.willReturn(expectedResponse);
 
-        Optional<WeatherResponse> actualResponse = subject.fetchWeather();
+		Optional<WeatherResponse> actualResponse = subject.fetchWeather();
 
-        assertThat(actualResponse, is(Optional.of(expectedResponse)));
-    }
+		assertThat(actualResponse, is(Optional.of(expectedResponse)));
+	}
 
-    @Test
-    public void shouldReturnEmptyOptionalIfWeatherServiceIsUnavailable() throws Exception {
-        given(restTemplate.getForObject("http://localhost:8089/someAppId/53.5511,9.9937", WeatherResponse.class))
-                .willThrow(new RestClientException("something went wrong"));
+	@Test
+	public void shouldReturnEmptyOptionalIfWeatherServiceIsUnavailable() throws Exception {
+		given(restTemplate.getForObject("http://localhost:8089/someAppId/53.5511,9.9937", WeatherResponse.class))
+				.willThrow(new RestClientException("something went wrong"));
 
-        Optional<WeatherResponse> actualResponse = subject.fetchWeather();
+		Optional<WeatherResponse> actualResponse = subject.fetchWeather();
 
-        assertThat(actualResponse, is(Optional.empty()));
+		assertThat(actualResponse, is(Optional.empty()));
 
-    }
+	}
+
+	@Test
+	public void shouldCallWeatherServiceAPI() throws Exception {
+		WeatherResponse expectedResponse = new WeatherResponse("light rain");
+		given(restTemplate.getForObject("http://localhost:8089/someAppId/53.5511,9.9937", WeatherResponse.class))
+				.willReturn(expectedResponse);
+
+		Optional<WeatherResponse> actualResponse = subject.fetchWeatherWithAPI("53.5511", "9.9937");
+
+		assertThat(actualResponse, is(Optional.of(expectedResponse)));
+	}
 
 }
