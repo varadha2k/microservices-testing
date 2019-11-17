@@ -40,7 +40,7 @@ public class WeatherClientIntegrationTest {
 
         Optional<WeatherResponse> weatherResponse = subject.fetchWeather();
 
-        Optional<WeatherResponse> expectedResponse = Optional.of(new WeatherResponse("Very Cloudy1"));
+        Optional<WeatherResponse> expectedResponse = Optional.of(new WeatherResponse("Very Cloudy"));
         assertThat(weatherResponse, is(expectedResponse));
     }
 }
