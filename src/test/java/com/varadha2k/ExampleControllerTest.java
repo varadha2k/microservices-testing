@@ -11,6 +11,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
 
+import com.varadha2k.ExampleController.RecommendationResponse;
 import com.varadha2k.weather.WeatherClient;
 import com.varadha2k.weather.WeatherResponse;
 
@@ -43,6 +44,29 @@ public class ExampleControllerTest {
         String weather = subject.weather();
 
         assertThat(weather, is("Hamburg, 8°C raining"));
+    }
+
+    @Test
+    public void shouldReturnWeatherWithLocation() throws Exception {
+        WeatherResponse weatherResponse = new WeatherResponse("Hamburg, 8°C raining");
+        given(weatherClient.fetchWeatherWithAPI("1","1")).willReturn(Optional.of(weatherResponse));
+
+        String weather = subject.weatherwithloc("1","1");
+
+        assertThat(weather, is("Hamburg, 8°C raining"));
+    }
+
+
+    @Test
+    public void shouldReturnWeatherRecommendation() throws Exception {
+    	
+    	
+        WeatherResponse weatherResponse = new WeatherResponse("rain");
+        given(weatherClient.fetchWeatherWithAPI("1","1")).willReturn(Optional.of(weatherResponse));
+
+        RecommendationResponse  weather = subject.weatherRecommendation("1","1");
+
+        assertThat(weather.recommendation, is("Use Umbrella"));
     }
 
     @Test
