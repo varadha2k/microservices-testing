@@ -23,7 +23,7 @@ steps:
     findBugsRunAnalysis: true
     pmdRunAnalysis: true
    
- - task: Gradle@2
+- task: Gradle@2
   inputs:
     tasks: 'integrationTest'
     workingDirectory: ''
@@ -36,7 +36,7 @@ steps:
     testResultsFiles: '**/TEST-*.xml'
     sonarQubeRunAnalysis: false
 
-  - task: Gradle@2
+- task: Gradle@2
   inputs:
     tasks: 'assemble'
     workingDirectory: ''
