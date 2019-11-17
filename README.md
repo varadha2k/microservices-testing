@@ -142,3 +142,7 @@ You can find lots of different tools, frameworks and libraries being used in the
   * **RestAssured**: testing the service end to end via HTTP
   * **Wiremock**: provide HTTP stubs for downstream services
 
+## Reference for Azure pipeline configuration
+Please refer the links below to read futher about Azure DevOps pipeline configuration
+https://www.petrikainulainen.net/programming/gradle/getting-started-with-gradle-integration-testing/
+https://github.com/pkainulainen/gradle-examples/tree/master/integration-tests
