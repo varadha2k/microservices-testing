@@ -38,13 +38,13 @@ steps:
     testResultsFiles: '**/TEST-*.xml'
     sonarQubeRunAnalysis: false
 
-- task: Gradle@2
-  displayName: Package build
-  inputs:
-    tasks: 'assemble'
-    workingDirectory: ''
-    gradleWrapperFile: 'gradlew'
-    gradleOptions: '-Xmx3072m'
-    javaHomeOption: 'JDKVersion'
-    jdkVersionOption: '1.8'
-    jdkArchitectureOption: 'x64'
+#- task: Gradle@2
+#  displayName: Package build
+#  inputs:
+#    tasks: 'assemble'
+#    workingDirectory: ''
+#    gradleWrapperFile: 'gradlew'
+#    gradleOptions: '-Xmx3072m'
+#    javaHomeOption: 'JDKVersion'
+#    jdkVersionOption: '1.8'
+#    jdkArchitectureOption: 'x64'
