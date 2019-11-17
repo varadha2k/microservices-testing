@@ -29,10 +29,6 @@ jar {
 
 sourceCompatibility = 1.8
 
-repositories {
-	mavenCentral()
-}
-
 dependencies {
 	compile('org.springframework.boot:spring-boot-starter')
 	compile('org.springframework.boot:spring-boot-starter-web') {
@@ -46,6 +42,38 @@ dependencies {
 	testCompile('au.com.dius:pact-jvm-consumer-junit_2.12:3.5.5')
 	testCompile('au.com.dius:pact-jvm-provider-spring_2.12:3.5.5')
 }
+
+
+sourceSets {
+	integration {
+    	java.srcDir "$projectDir/src/integration/java"
+    	resources.srcDir "$projectDir/src/integration/resources"
+    	compileClasspath += main.output + test.output
+    	runtimeClasspath += main.output + test.output
+    }
+}
+
+
+configurations {
+    integrationImplementation.extendsFrom testImplementation
+    integrationRuntime.extendsFrom testRuntime
+}
+
+task integrationTest(type: Test) {
+    description = 'Runs the integration tests.'
+    group = 'verification'
+    testClassesDir = sourceSets.integration.output.classesDir
+    classpath = sourceSets.integration.runtimeClasspath
+    outputs.upToDateWhen { false }
+}
+
+check.dependsOn integrationTest
+
+
+repositories {
+	mavenCentral()
+}
+
 
 jacoco {
 	toolVersion = "0.7.9"
@@ -61,6 +89,19 @@ jacocoTestReport {
 }
 
 test {
+ 	testLogging {
+        events "passed", "skipped", "failed"
+        exceptionFormat "full"
+    }
+    
+	jacoco {
+		append = false
+		destinationFile = file("$buildDir/jacoco/jacocoTest.exec")
+		classDumpDir = file("$buildDir/jacoco/classpathdumps")
+	}
+}
+
+integrationTest {
  	testLogging {
         events "passed", "skipped", "failed"
         exceptionFormat "full"
