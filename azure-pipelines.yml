@@ -23,6 +23,7 @@ steps:
     checkStyleRunAnalysis: true
     findBugsRunAnalysis: true
     pmdRunAnalysis: true
+    codeCoverageToolOption: 'Cobertura'
    
 - task: Gradle@2
   displayName: Run Integration Test
