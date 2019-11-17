@@ -6,6 +6,7 @@ pool:
 
 steps:
 - task: Gradle@2
+  displayName: Run Unit Test
   inputs:
     tasks: 'test'
     workingDirectory: ''
@@ -24,6 +25,7 @@ steps:
     pmdRunAnalysis: true
    
 - task: Gradle@2
+  displayName: Run Integration Test
   inputs:
     tasks: 'integrationTest'
     workingDirectory: ''
@@ -37,6 +39,7 @@ steps:
     sonarQubeRunAnalysis: false
 
 - task: Gradle@2
+  displayName: Package build
   inputs:
     tasks: 'assemble'
     workingDirectory: ''
