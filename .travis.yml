@@ -26,6 +26,6 @@ cache:
     .gradle
   
 script:
-  - ./gradlew clean check build sonarqube
+  - ./gradlew clean test integrationTest build sonarqube
   
   
