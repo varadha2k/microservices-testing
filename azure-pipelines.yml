@@ -38,6 +38,20 @@ steps:
     publishJUnitResults: true
     testResultsFiles: '**/integrationTest/TEST-*.xml'
     sonarQubeRunAnalysis: false
+- task: Gradle@2
+  displayName: Run Contract Test
+  inputs:
+    tasks: 'contractTest'
+    workingDirectory: ''
+    gradleWrapperFile: 'gradlew'
+    gradleOptions: '-Xmx3072m'
+    javaHomeOption: 'JDKVersion'
+    jdkVersionOption: '1.8'
+    jdkArchitectureOption: 'x64'
+    publishJUnitResults: true
+    testResultsFiles: '**/contractTest/TEST-*.xml'
+    sonarQubeRunAnalysis: false
+
 
 #- task: Gradle@2
 #  displayName: Package build

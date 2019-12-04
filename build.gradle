@@ -51,19 +51,36 @@ sourceSets {
     	compileClasspath += main.output + test.output
     	runtimeClasspath += main.output + test.output
     }
+    contract {
+    	java.srcDir "$projectDir/src/contract/java"
+    	resources.srcDir "$projectDir/src/contract/resources"
+    	compileClasspath += main.output + test.output
+    	runtimeClasspath += main.output + test.output
+    }
+    
 }
 
 
 configurations {
     integrationImplementation.extendsFrom testImplementation
     integrationRuntime.extendsFrom testRuntime
+    contractImplementation.extendsFrom testImplementation
+    contractRuntime.extendsFrom testRuntime
 }
 
 task integrationTest(type: Test) {
-    description = 'Runs the integration tests.'
+    description = 'Runs all integration tests.'
     group = 'verification'
     testClassesDir = sourceSets.integration.output.classesDir
     classpath = sourceSets.integration.runtimeClasspath
+    outputs.upToDateWhen { false }
+}
+
+task contractTest(type: Test) {
+    description = 'Runs all Contract tests.'
+    group = 'verification'
+    testClassesDir = sourceSets.contract.output.classesDir
+    classpath = sourceSets.contract.runtimeClasspath
     outputs.upToDateWhen { false }
 }
 
@@ -102,6 +119,19 @@ test {
 }
 
 integrationTest {
+ 	testLogging {
+        events "passed", "skipped", "failed"
+        exceptionFormat "full"
+    }
+    
+	jacoco {
+		append = false
+		destinationFile = file("$buildDir/jacoco/jacocoTest.exec")
+		classDumpDir = file("$buildDir/jacoco/classpathdumps")
+	}
+}
+
+contractTest {
  	testLogging {
         events "passed", "skipped", "failed"
         exceptionFormat "full"
