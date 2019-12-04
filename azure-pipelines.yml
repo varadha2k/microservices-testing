@@ -9,6 +9,7 @@ steps:
   displayName: Run Unit Test
   inputs:
     tasks: 'test'
+    testRunTitle: 'Unit Test'
     workingDirectory: ''
     gradleWrapperFile: 'gradlew'
     gradleOptions: '-Xmx3072m'
@@ -29,6 +30,7 @@ steps:
   displayName: Run Integration Test
   inputs:
     tasks: 'integrationTest'
+    testRunTitle: 'Integration Test'
     workingDirectory: ''
     gradleWrapperFile: 'gradlew'
     gradleOptions: '-Xmx3072m'
@@ -42,6 +44,7 @@ steps:
   displayName: Run Contract Test
   inputs:
     tasks: 'contractTest'
+    testRunTitle: 'Contract Test'
     workingDirectory: ''
     gradleWrapperFile: 'gradlew'
     gradleOptions: '-Xmx3072m'
